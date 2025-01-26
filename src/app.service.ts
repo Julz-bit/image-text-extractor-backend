@@ -7,8 +7,8 @@ export class AppService {
     return 'Hello World!';
   }
 
-  async processImg(imgBuffer: Buffer): Promise<string> {
+  async processImg(imgBuffer: Buffer): Promise<{ text: string }> {
     const { data: { text } } = await Tesseract.recognize(imgBuffer)
-    return text;
+    return { text }
   }
 }

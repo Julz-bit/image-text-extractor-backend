@@ -4,7 +4,7 @@ import { ApiBody, ApiConsumes, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { AppService } from './app.service';
 
 @ApiTags('Files Service')
-@Controller()
+@Controller('api/app')
 export class AppController {
   constructor(private readonly appService: AppService) { }
 
@@ -33,7 +33,7 @@ export class AppController {
     @UploadedFile(
       new ParseFilePipe({
         validators: [
-          new FileTypeValidator({ fileType: 'image/jpeg' }),
+          new FileTypeValidator({ fileType: 'image' }),
           //also can add a custom validator for checking the file magic number to ensure the file is an image
         ],
         fileIsRequired: true
